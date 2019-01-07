@@ -178,7 +178,41 @@
                   />
                 </td>
                 <td class="pa-1">
+                  <!-- <v-edit-dialog
+                    v-if="!props.item.fixed"
+                    :return-value.sync="props.item.price"
+                    lazy
+                    class="mx-auto"
+                    style="width:fit-content;"
+                  >
+                    <money
+                      :value="props.item.price"
+                      v-bind="{
+                        thousands: ',',
+                        suffix: ' 円',
+                        precision: 0,
+                        masked: false,
+                      }"
+                      :disabled="props.item.fixed"
+                      style="width:88px;"
+                      class="money-input subheading"
+                    />
+                    <money
+                      slot="input"
+                      v-model="props.item.price"
+                      v-bind="{
+                        thousands: ',',
+                        suffix: ' 円',
+                        precision: 0,
+                        masked: false,
+                      }"
+                      :disabled="props.item.fixed"
+                      style="width:88px;"
+                      class="money-input subheading"
+                    />
+                  </v-edit-dialog>
                   <money
+                    v-else
                     v-model="props.item.price"
                     v-bind="{
                       thousands: ',',
@@ -189,17 +223,20 @@
                     :disabled="props.item.fixed"
                     style="width:88px;"
                     class="money-input subheading"
+                  /> -->
+
+                  <money
+                    v-model="props.item.price"
+                    v-bind="{
+                      thousands: ',',
+                      suffix: ' 円',
+                      precision: 0,
+                      masked: false,
+                    }"
+                    :disabled="true"
+                    style="width:88px;"
+                    class="money-input subheading"
                   />
-                </td>
-                <td>
-                  <v-checkbox
-                    v-model="props.item.fixed"
-                    primary
-                    hide-details
-                    color="primary"
-                    class="mx-auto mr-0"
-                    style="width:fit-content;"
-                  ></v-checkbox>
                 </td>
               </template>
             </v-data-table>
@@ -243,7 +280,7 @@ export default {
       },
       { text: '傾斜', value: 'rate', sortable: false, width: '1%' },
       { text: '金額', value: 'price', sortable: true, align: 'center' },
-      { text: '固定', value: 'fixed', sortable: false, width: '1%' }
+      // { text: '固定', value: 'fixed', sortable: false, width: '1%' }
     ],
     params: {
       charge: 0,
