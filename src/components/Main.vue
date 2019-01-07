@@ -372,6 +372,8 @@ export default {
 
 <style>
 .money-input {
+  -webkit-text-fill-color: inherit;
+  opacity: 1;
   box-shadow: 0 0 6px 0 rgba(233,30,99,0.9);
 }
 .money-input:focus {
