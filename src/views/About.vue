@@ -35,7 +35,7 @@
           <p class="my-1">ご要望や不具合などのご連絡は、お手数ですが以下の方法でご連絡をお願いいたします。</p>
           <ul class="mt-2 mx-auto" style="width:fit-content;">
             <li style="width:fit-content;">
-              ハッシュタグ<a>#warikan-tool</a>とメンション<a>@icchi_h</a>をつけて<a href="https://twitter.com/intent/tweet?hashtags=warikan-tool&via=icchi_h" target="popup">ツイート</a>
+              ハッシュタグ<a>#warikantool</a>とメンション<a>@icchi_h</a>をつけて<a href="https://twitter.com/intent/tweet?hashtags=warikantool&via=icchi_h" target="popup">ツイート</a>
             </li>
             <li style="width:fit-content;"><a href="https://twitter.com/icchi_h" target="_blank">@icchi_h</a> へダイレクトメッセージ</li>
           </ul>
