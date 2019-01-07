@@ -1,6 +1,6 @@
 {
-  "name": "warikan-calculator",
-  "short_name": "warikan-calculator",
+  "name": "割り勘計算アプリ",
+  "short_name": "割り勘計算",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
@@ -15,6 +15,6 @@
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#4DBA87"
+  "background_color": "#f5f5f5",
+  "theme_color": "#252525"
 }

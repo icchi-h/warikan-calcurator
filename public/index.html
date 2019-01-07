@@ -1,17 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>warikan-calculator</title>
+    <title>割り勘計算ツール</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+    <!-- OGP -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="割り勘計算ツール"/>
+    <meta property="og:description" content="傾斜をつけた割り勘の計算ができるWebアプリです。傾斜は5段階、または手動で細かく指定することも可能です。"/>
+    <meta property="og:image" content="/icon.png"/>
+    <meta property="og:url" content="https://warikan.tool.icchi.me"/>
+    <meta property="og:site_name" content="割り勘計算"/>
+    <!-- twitter ogp -->
+    <meta name="twitter:title" content="割り勘計算ツール" />
+    <meta name="twitter:description" content="傾斜をつけた割り勘の計算ができるWebアプリです。傾斜は5段階、または手動で細かく指定することも可能です。" />
+    <meta name="twitter:image" content="/icon.png" />
+    <meta name="twitter:url" content="https://warikan.tool.icchi.me" />
+    <meta name="twitter:card" content="summary" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-47709529-4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-47709529-4');
+    </script>
   </head>
   <body>
     <noscript>
       <strong>We're sorry but warikan-calculator doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
-    <!-- built files will be auto injected -->
   </body>
 </html>
