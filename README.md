@@ -1,29 +1,7 @@
-# warikan-calculator
+# 割り勘計算ツール
+傾斜をつけた割り勘の計算ができるWebアプリです。傾斜は5段階、または手動で細かく指定することも可能です。
 
-## Project setup
-```
-yarn install
-```
+<https://warikan.tool.icchi.me>
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 使い方
+<https://warikan.tool.icchi.me/about>
