@@ -84,7 +84,6 @@
                     masked: false
                   }"
                   @input.native="calcBill()"
-                  @keydown.enter.native.prevent="pushEnter()"
                   class="headline font-weight-medium ma-1 pa-1 money-input charge-input"
                   style="width: 160px;"
                 >
@@ -101,7 +100,6 @@
                     masked: false,
                   }"
                   @input.native="calcBill()"
-                  @keydown.enter.native.prevent="pushEnter()"
                   class="title font-weight-regular money-input minunit-input"
                   style="width: 120px;"
                 >
@@ -136,7 +134,6 @@
                     masked: false,
                   }"
                   disabled
-                  @keydown.enter.native.prevent="pushEnter()"
                   style="width:160px;"
                   class="title font-weight-regular money-input summary-input summary-sum-input"
                 />
@@ -153,7 +150,6 @@
                     masked: false,
                   }"
                   disabled
-                  @keydown.enter.native.prevent="pushEnter()"
                   style="width:160px;"
                   class="title font-weight-regular money-input summary-input summary-rem-input"
                 />
@@ -191,7 +187,6 @@
                       masked: false,
                     }"
                     :disabled="props.item.fixed"
-                    @keydown.enter.native.prevent="pushEnter()"
                     style="width:88px;"
                     class="money-input subheading"
                   />
