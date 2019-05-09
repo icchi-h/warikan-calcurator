@@ -3,12 +3,7 @@
     <v-container class="about">
       <v-layout wrap>
         <v-flex xs12>
-          <v-img
-            :src="require('../../public/icon.svg')"
-            class="my-3"
-            contain
-            height="120"
-          ></v-img>
+          <v-img :src="require('../../public/icon.svg')" class="my-3" contain height="120"></v-img>
           <h1>割り勘計算ツールについて</h1>
           <h2 class="mt-4 mb-3 pa-2">目的</h2>
           <p>傾斜をつけた割り勘の計算ができるWebアプリです。</p>
@@ -22,6 +17,8 @@
             <li>画面上部にある「2.料金の計算」タブをタップして画面を移動</li>
             <li>枠内の料金フォームをタップして支払った総額料金を入力</li>
             <li>必要に応じて、計算モードや参加者の傾斜指数を設定</li>
+            <li>「計算」ボタンを押して結果を更新</li>
+            <li>「コピー」「共有」ボタンで結果を共有</li>
             <!-- <li>※特定参加者の支払料金が固定の場合はテーブル内の金額フォームを入力した後、固定チェックボックスをタップ</li> -->
           </ol>
 
@@ -35,9 +32,17 @@
           <p class="my-1">ご要望や不具合などのご連絡は、お手数ですが以下の方法でご連絡をお願いいたします。</p>
           <ul class="mt-2 mx-auto" style="width:fit-content;">
             <li style="width:fit-content;">
-              ハッシュタグ<a>#warikantool</a>とメンション<a>@icchi_h</a>をつけて<a href="https://twitter.com/intent/tweet?hashtags=warikantool&via=icchi_h" target="popup">ツイート</a>
+              ハッシュタグ
+              <a>#warikantool</a>とメンション
+              <a>@icchi_h</a>をつけて
+              <a
+                href="https://twitter.com/intent/tweet?hashtags=warikantool&via=icchi_h"
+                target="popup"
+              >ツイート</a>
             </li>
-            <li style="width:fit-content;"><a href="https://twitter.com/icchi_h" target="_blank">@icchi_h</a> へダイレクトメッセージ</li>
+            <li style="width:fit-content;">
+              <a href="https://twitter.com/icchi_h" target="_blank">@icchi_h</a> へダイレクトメッセージ
+            </li>
           </ul>
         </v-flex>
       </v-layout>
@@ -47,12 +52,12 @@
 </template>
 
 <script>
-import Footer from '../components/Footer'
+import Footer from "../components/Footer";
 export default {
   components: {
     Footer
   }
-}
+};
 </script>
 
 <style scoped>
