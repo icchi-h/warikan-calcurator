@@ -245,11 +245,11 @@
               </template>
             </v-data-table>
             <v-layout class="act-btns mt-2 pa-1m mb-1 mx-auto">
-              <v-flex>
-                <v-btn color="secondary" class="ml-0 act-btn" @click="copy">結果をコピー</v-btn>
+              <v-flex class="pr-1">
+                <v-btn color="secondary" class="ma-0 act-btn" @click="copy">結果をコピー</v-btn>
               </v-flex>
-              <v-flex>
-                <v-btn color="secondary" class="mr-0 act-btn" @click="share">
+              <v-flex class="pl-1">
+                <v-btn color="secondary" class="ma-0 act-btn" @click="share">
                   <v-icon>share</v-icon>
                 </v-btn>
               </v-flex>
@@ -523,5 +523,6 @@ export default {
 }
 .act-btn {
   width: 100%;
+  margin: 0;
 }
 </style>
