@@ -365,6 +365,9 @@ export default {
         }
       }
       this.calcSummary();
+
+      // scroll
+      this.$vuetify.goTo(".collect-summary");
     },
     calcSummary() {
       // calc summary
