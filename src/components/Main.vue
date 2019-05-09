@@ -244,11 +244,25 @@
                 </td>
               </template>
             </v-data-table>
+            <v-layout class="act-btns mt-2 pa-1m mb-1 mx-auto">
+              <v-flex>
+                <v-btn color="secondary" class="ml-0 act-btn" @click="copy">結果をコピー</v-btn>
+              </v-flex>
+              <v-flex>
+                <v-btn color="secondary" class="mr-0 act-btn" @click="share">
+                  <v-icon>share</v-icon>
+                </v-btn>
+              </v-flex>
+            </v-layout>
             <Footer/>
           </v-tab-item>
         </v-tabs-items>
       </v-flex>
     </v-layout>
+    <v-snackbar v-model="snackbar.show" bottom>
+      {{snackbar.message}}
+      <v-btn color="pink" flat @click="snackbar.show = false">close</v-btn>
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -257,6 +271,7 @@ import Footer from "../components/Footer";
 import { levels, getPerson } from "../utils/member";
 import { getAveragePrice } from "../utils/price";
 import { Money } from "v-money";
+import copy2clipboard from "copy-to-clipboard";
 
 export default {
   components: {
@@ -292,6 +307,10 @@ export default {
     summary: {
       sum: 0,
       rem: 0
+    },
+    snackbar: {
+      show: false,
+      message: ""
     }
   }),
   methods: {
@@ -379,6 +398,35 @@ export default {
       }
       this.summary.sum = collectSum;
       this.summary.rem = collectSum - this.params.charge;
+    },
+
+    getResult() {
+      const header = this.headerOption.map(item => item.text).join("\t") + "\n";
+      const content = this.member
+        .map(item => [item.name, item.rate, item.price].join("\t"))
+        .join("\n");
+      return header + content;
+    },
+    copy() {
+      try {
+        copy2clipboard(this.getResult());
+        this.snackbar.message = "コピーしました";
+      } catch (e) {
+        this.snackbar.message = "コピーに失敗しました";
+      }
+      this.snackbar.show = true;
+    },
+    share() {
+      if (window.navigator.share) {
+        window.navigator.share({
+          url: "https://warikan.tool.icchi.me",
+          title: "割り勘計算ツール",
+          text: this.getResult()
+        });
+      } else {
+        this.snackbar.message = "ご利用の環境ではShare APIが利用できません";
+        this.snackbar.show = true;
+      }
     }
   }
 };
@@ -467,5 +515,13 @@ export default {
 .collect-summary-item {
   width: fit-content;
   border-bottom: solid 2px #f5f5f5;
+}
+
+.act-btns {
+  width: 100%;
+  max-width: 560px;
+}
+.act-btn {
+  width: 100%;
 }
 </style>
