@@ -6,10 +6,23 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [
+    "rewrites": [{
+      "source": "**",
+      "destination": "/index.html"
+    }],
+    "headers": [{
+        "source": "**/@(service-worker|sw).js",
+        "headers": [{
+          "key": "Cache-Control",
+          "value": "no-store"
+        }]
+      },
       {
-        "source": "**",
-        "destination": "/index.html"
+        "source": "**/*.@(jpg|jpeg|gif|png)",
+        "headers": [{
+          "key": "Cache-Control",
+          "value": "max-age=7200"
+        }]
       }
     ]
   }
