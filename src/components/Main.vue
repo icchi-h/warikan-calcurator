@@ -1,9 +1,6 @@
 <template>
   <v-container class="pa-0 pt-1">
-    <v-layout
-      wrap
-      text-xs-center
-    >
+    <v-layout wrap text-xs-center>
       <v-flex>
         <v-tabs
           slot="extension"
@@ -15,13 +12,9 @@
         >
           <!-- <v-tabs-slider color="primary"></v-tabs-slider> -->
 
-          <v-tab href="#tab1" class="subheading font-weight-medium tab">
-            1. 参加者を入力
-          </v-tab>
+          <v-tab href="#tab1" class="subheading font-weight-medium tab">1. 参加者を入力</v-tab>
 
-          <v-tab href="#tab2" class="subheading font-weight-medium tab">
-            2. 料金の計算
-          </v-tab>
+          <v-tab href="#tab2" class="subheading font-weight-medium tab">2. 料金の計算</v-tab>
         </v-tabs>
 
         <v-tabs-items v-model="tab" class="pt-2 px-2">
@@ -32,12 +25,20 @@
               <h4>参加人数</h4>
               <div class="counter-content">
                 <v-btn fab light @click="removePerson()" class="headline font-weight-bold">ー</v-btn>
-                <span class="mx-2"><span class="display-1">{{member.length}}</span><span>人</span></span>
+                <span class="mx-2">
+                  <span class="display-1">{{member.length}}</span>
+                  <span>人</span>
+                </span>
                 <v-btn fab light @click="addPerson()" class="headline font-weight-bold">＋</v-btn>
               </div>
             </div>
             <div class="member-list mt-4">
-              <v-card light v-for="(person, idx) in member" :key="person.id" class="person mb-2 mx-auto pa-2">
+              <v-card
+                light
+                v-for="(person, idx) in member"
+                :key="person.id"
+                class="person mb-2 mx-auto pa-2"
+              >
                 <v-icon style="font-size:32px;">person</v-icon>
                 <div class="mr-2">
                   <v-text-field
@@ -70,9 +71,8 @@
           </v-tab-item>
 
           <v-tab-item value="tab2" class="tab-content tab2-content pt-2">
-
             <h3 class="font-weight-regular param-inputs-label">金額を入力して下さい</h3>
-            <div class="price-input-wrap mt-2 pa-3 pb-4">
+            <div class="price-input-wrap mt-2 pa-3 pb-4 mx-auto">
               <div>
                 <h2 class="subheading font-weight-bold charge-input-label">お店に支払った金額</h2>
                 <money
@@ -83,11 +83,9 @@
                     precision: 0,
                     masked: false
                   }"
-                  @input.native="calcBill()"
                   class="headline font-weight-medium ma-1 pa-1 money-input charge-input"
                   style="width: 160px;"
-                >
-                </money>
+                ></money>
               </div>
               <div class="mt-2">
                 <h4 class="minunit-input-label">分割金額の最小単位</h4>
@@ -99,32 +97,39 @@
                     precision: 0,
                     masked: false,
                   }"
-                  @input.native="calcBill()"
                   class="title font-weight-regular money-input minunit-input"
                   style="width: 120px;"
-                >
-                </money>
+                ></money>
               </div>
             </div>
             <div class="mode-selector mt-4">
               <h4 class="calc-mode-label">計算モード</h4>
               <v-radio-group
-                v-model="calcMode" row hide-details
-                class="mt-0 mx-auto" style="width:fit-content;"
+                v-model="calcMode"
+                row
+                hide-details
+                class="mt-0 mx-auto"
+                style="width:fit-content;"
                 @change="changeCalcMode"
               >
                 <v-radio
-                  v-for="mode in calcModes" :key="mode"
-                  :label="mode" :value="mode"
+                  v-for="mode in calcModes"
+                  :key="mode"
+                  :label="mode"
+                  :value="mode"
                   color="primary"
                   class="ma-2"
                 >{{mode}}</v-radio>
               </v-radio-group>
             </div>
 
+            <div class="my-2">
+              <v-btn large color="primary" class="calc-btn" @click="calcBill()">計算</v-btn>
+            </div>
+
             <div class="collect-summary mt-2 pa-1">
               <div class="collect-summary-item px-3 mx-auto">
-                <span>集金額： </span>
+                <span>集金額：</span>
                 <money
                   v-model="summary.sum"
                   v-bind="{
@@ -140,7 +145,7 @@
               </div>
               <div class="collect-summary-item px-3 mx-auto">
                 <!-- eslint-disable-next-line -->
-                <span>余り　： </span>
+                <span>余り ：</span>
                 <money
                   v-model="summary.rem"
                   v-bind="{
@@ -223,7 +228,7 @@
                     :disabled="props.item.fixed"
                     style="width:88px;"
                     class="money-input subheading"
-                  /> -->
+                  />-->
 
                   <money
                     v-model="props.item.price"
@@ -249,10 +254,10 @@
 </template>
 
 <script>
-import Footer from '../components/Footer'
-import { levels, getPerson } from '../utils/member'
-import { getAveragePrice } from '../utils/price'
-import { Money } from 'v-money'
+import Footer from "../components/Footer";
+import { levels, getPerson } from "../utils/member";
+import { getAveragePrice } from "../utils/price";
+import { Money } from "v-money";
 
 export default {
   components: {
@@ -264,30 +269,27 @@ export default {
     levels,
 
     // tab1
-    member: [
-      getPerson('member1', '参加者1'),
-      getPerson('member2', '参加者2')
-    ],
+    member: [getPerson("member1", "参加者1"), getPerson("member2", "参加者2")],
     personCounter: 2,
 
     // tab2
     headerOption: [
       {
-        text: '名前',
-        value: 'name',
+        text: "名前",
+        value: "name",
         sortable: false,
-        align: 'center'
+        align: "center"
       },
-      { text: '傾斜', value: 'rate', sortable: false, width: '1%' },
-      { text: '金額', value: 'price', sortable: true, align: 'center' },
+      { text: "傾斜", value: "rate", sortable: false, width: "1%" },
+      { text: "金額", value: "price", sortable: true, align: "center" }
       // { text: '固定', value: 'fixed', sortable: false, width: '1%' }
     ],
     params: {
       charge: 0,
       minUnit: 100
     },
-    calcModes: ['傾斜', 'きっちり割り勘', '男気', '運試し'],
-    calcMode: '傾斜',
+    calcModes: ["傾斜", "きっちり割り勘", "男気", "運試し"],
+    calcMode: "傾斜",
     summary: {
       sum: 0,
       rem: 0
@@ -296,16 +298,18 @@ export default {
   methods: {
     // tab1
     addPerson() {
-      this.personCounter += 1
-      this.member.push(getPerson('person' + this.personCounter, '参加者' + this.personCounter))
+      this.personCounter += 1;
+      this.member.push(
+        getPerson("person" + this.personCounter, "参加者" + this.personCounter)
+      );
     },
-    removePerson(idx=this.member.length-1) {
-      this.member.splice(idx, 1)
+    removePerson(idx = this.member.length - 1) {
+      this.member.splice(idx, 1);
     },
     updateLevel(level, idx) {
       // console.log('idx:', idx)
       // console.log('level:', level)
-      this.member[idx].rate = levels[level - 1].rate
+      this.member[idx].rate = levels[level - 1].rate;
     },
 
     // tab2
@@ -314,75 +318,80 @@ export default {
       // 傾斜
       if (this.calcMode === this.calcModes[0]) {
         for (let i in this.member) {
-          this.member[i].rate = this.levels[this.member[i].level - 1].rate
+          this.member[i].rate = this.levels[this.member[i].level - 1].rate;
         }
-      // eslint-disable-next-line
+        // eslint-disable-next-line
       }
       // きっちり割り勘
       else if (this.calcMode === this.calcModes[1]) {
         // set same rate
         for (let person of this.member) {
-          person.rate = 1
+          person.rate = 1;
         }
-      // eslint-disable-next-line
+        // eslint-disable-next-line
       }
       // 男気
       else if (this.calcMode === this.calcModes[2]) {
-        const otokogiRate = 3
+        const otokogiRate = 3;
 
         for (let i in this.member) {
           // this.member[i].rate = Number((this.levels[this.member[i].level - 1].rate ** this.levels[this.member[i].level - 1].rate ).toFixed(2))
-          this.member[i].rate = Number((this.levels[this.member[i].level - 1].rate ** otokogiRate).toFixed())
+          this.member[i].rate = Number(
+            (
+              this.levels[this.member[i].level - 1].rate ** otokogiRate
+            ).toFixed()
+          );
         }
-      // eslint-disable-next-line
+        // eslint-disable-next-line
       }
       // 運試し
       else if (this.calcMode === this.calcModes[3]) {
         // set random rate
         for (let person of this.member) {
-          person.rate = Number(Math.random().toFixed(2))
+          person.rate = Number(Math.random().toFixed(2));
         }
       }
-
-      // calc bill
-      this.calcBill()
     },
     calcBill() {
       if (this.member && this.member.length !== 0) {
-        let average = getAveragePrice(this.params.charge, this.member)
+        let average = getAveragePrice(this.params.charge, this.member);
         for (let person of this.member) {
           // update rate
-          if (!person.fixed) person.price = Math.ceil(average * person.rate / this.params.minUnit) * this.params.minUnit
+          if (!person.fixed) {
+            person.price =
+              Math.ceil((average * person.rate) / this.params.minUnit) *
+              this.params.minUnit;
+          }
         }
       }
-      this.calcSummary()
+      this.calcSummary();
     },
     calcSummary() {
       // calc summary
-      let collectSum = 0
+      let collectSum = 0;
       for (let person of this.member) {
-        collectSum += person.price
+        collectSum += person.price;
       }
-      this.summary.sum = collectSum
-      this.summary.rem = collectSum - this.params.charge
+      this.summary.sum = collectSum;
+      this.summary.rem = collectSum - this.params.charge;
     }
   }
-}
+};
 </script>
 
 <style>
 .money-input {
   -webkit-text-fill-color: inherit;
   opacity: 1;
-  box-shadow: 0 0 6px 0 rgba(233,30,99,0.9);
+  box-shadow: 0 0 6px 0 rgba(233, 30, 99, 0.9);
 }
 .money-input:focus {
   outline: 0;
-  border: solid 1px rgba(233,30,99,0.8);
-  box-shadow: 0 0 12px 0 rgba(233,30,99,0.9);
+  border: solid 1px rgba(233, 30, 99, 0.8);
+  box-shadow: 0 0 12px 0 rgba(233, 30, 99, 0.9);
 }
 .money-input:disabled {
-  box-shadow: 0 0 2px 0 rgba(233,30,99,0);
+  box-shadow: 0 0 2px 0 rgba(233, 30, 99, 0);
 }
 
 .tab {
@@ -408,7 +417,7 @@ export default {
 }
 
 /* .member-list { */
-  /* height: calc(100vh - (56px + 48px + 280px));
+/* height: calc(100vh - (56px + 48px + 280px));
   overflow-y: auto; */
 /* } */
 
@@ -434,12 +443,20 @@ export default {
 .price-input-wrap {
   border: solid 2px #f5f5f5;
   border-radius: 4px;
+  max-width: 560px;
 }
 
 .money-input {
   text-align: right;
   padding: 4px;
   max-width: 100%;
+}
+
+.calc-btn {
+  font-weight: bold;
+  width: 100%;
+  max-width: 560px;
+  margin: 0;
 }
 
 .collect-summary-item {
