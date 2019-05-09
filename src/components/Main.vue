@@ -110,7 +110,6 @@
                 hide-details
                 class="mt-0 mx-auto"
                 style="width:fit-content;"
-                @change="changeCalcMode"
               >
                 <v-radio
                   v-for="mode in calcModes"
@@ -353,6 +352,8 @@ export default {
       }
     },
     calcBill() {
+      this.changeCalcMode();
+
       if (this.member && this.member.length !== 0) {
         let average = getAveragePrice(this.params.charge, this.member);
         for (let person of this.member) {
@@ -364,6 +365,7 @@ export default {
           }
         }
       }
+
       this.calcSummary();
 
       // scroll
