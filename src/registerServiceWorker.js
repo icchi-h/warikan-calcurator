@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === 'production') {
     updated() {
       console.log('New content is available; please refresh.')
       if (window.location) {
-        if (confirm("更新が終了しました。\n適用するためにリロードしますか?")) {
+        if (confirm("更新が完了しました。\n適用するためにリロードしますか?")) {
           console.log('Start to refresh.');
           window.location.reload(true);
         }
