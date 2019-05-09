@@ -1,6 +1,8 @@
 <template>
-  <v-toolbar app fixed dark>
-    <a href="/" class="mt-2"><img src="../../public/icon.svg" height="40px" style="max-height: 90%"/></a>
+  <v-toolbar app fixed flat dark>
+    <a href="/" class="mt-2">
+      <img src="../../public/icon.svg" height="40px" style="max-height: 90%">
+    </a>
     <v-toolbar-title class="headline">
       <span class="font-weight-bold">割り勘計算ツール</span>
     </v-toolbar-title>

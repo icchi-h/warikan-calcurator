@@ -1,5 +1,5 @@
 <template>
-  <v-container class="pa-0 pt-1">
+  <v-container fill-height class="pa-0">
     <v-layout wrap text-xs-center>
       <v-flex>
         <v-tabs
@@ -17,7 +17,7 @@
           <v-tab href="#tab2" class="subheading font-weight-medium tab">2. 料金の計算</v-tab>
         </v-tabs>
 
-        <v-tabs-items v-model="tab" class="pt-2 px-2">
+        <v-tabs-items v-model="tab" class="pt-3 px-3">
           <v-tab-item value="tab1" class="py-2 tab-content">
             <h3 class="font-weight-regular">参加したメンバーを入力してから「2.計算」タブに移動して下さい</h3>
 
@@ -123,7 +123,7 @@
               </v-radio-group>
             </div>
 
-            <div class="my-2">
+            <div class="my-4">
               <v-btn large color="primary" class="calc-btn" @click="calcBill()">計算</v-btn>
             </div>
 
@@ -400,7 +400,7 @@ export default {
 }
 
 .tab-content {
-  height: calc(100vh - (56px + 48px + 44px));
+  height: calc(100vh - (56px + 48px + 32px));
   overflow-y: auto;
 }
 
