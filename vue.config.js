@@ -1,3 +1,8 @@
 module.exports = {
-  baseUrl: '/'
+  baseUrl: '/',
+  pwa: {
+    workboxOptions: {
+      skipWaiting: true
+    }
+  }
 }
