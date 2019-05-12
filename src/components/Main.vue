@@ -186,6 +186,7 @@
                     v-if="!props.item.fixed"
                     :return-value.sync="props.item.price"
                     lazy
+                    large
                     class="mx-auto"
                     style="width:fit-content;"
                   >
