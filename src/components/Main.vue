@@ -178,7 +178,7 @@
                     single-line
                     :disabled="props.item.fixed"
                     class="text-input mt-0 pt-0 text-xs-right"
-                    style="width:32px;"
+                    style="width:40px;"
                   />
                 </td>
                 <td class="pa-1">
