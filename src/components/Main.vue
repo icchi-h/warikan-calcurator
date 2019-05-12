@@ -418,7 +418,11 @@ export default {
     },
 
     getResult() {
-      const header = this.headerOption.map(item => item.text).join("\t") + "\n";
+      const header =
+        this.headerOption
+          .filter((item, idx) => idx < 3)
+          .map(item => item.text)
+          .join("\t") + "\n";
       const content = this.member
         .map(item => [item.name, item.rate, item.price].join("\t"))
         .join("\n");
