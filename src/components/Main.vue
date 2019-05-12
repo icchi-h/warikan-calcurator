@@ -110,6 +110,7 @@
                 hide-details
                 class="mt-0 mx-auto"
                 style="width:fit-content;"
+                @change="changeCalcMode"
               >
                 <v-radio
                   v-for="mode in calcModes"
@@ -363,15 +364,24 @@ export default {
         // eslint-disable-next-line
       }
       // 運試し
-      else if (this.calcMode === this.calcModes[3]) {
-        // set random rate
-        for (let person of this.member) {
-          person.rate = Number(Math.random().toFixed(2));
-        }
-      }
+      // else if (this.calcMode === this.calcModes[3]) {
+      //   // set random rate
+      //   for (let person of this.member) {
+      //     person.rate = Number(Math.random().toFixed(2));
+      //   }
+      // }
     },
     calcBill() {
-      this.changeCalcMode();
+      // 運試し
+      if (this.calcMode === this.calcModes[3]) {
+        const minRate = 0.15;
+        // set random rate
+        for (let person of this.member) {
+          person.rate = Number(
+            (Math.random() * (1 - minRate) + minRate).toFixed(2)
+          );
+        }
+      }
 
       if (this.member && this.member.length !== 0) {
         let average = getAveragePrice(this.params.charge, this.member);
